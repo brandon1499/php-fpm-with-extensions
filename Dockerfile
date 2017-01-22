@@ -1,4 +1,4 @@
-FROM php:fpm
+FROM php:7.1-fpm
 
 # Install library dependencies
 RUN apt-get update && apt-get install --no-install-recommends -y \
@@ -15,9 +15,11 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     libmemcached-dev \
     freetds-dev
 
+# Install Redis
+RUN pecl7.1-sp install redis
+
 # Install PHP extensions
-RUN pecl install redis \
-    && docker-php-ext-install \
+RUN docker-php-ext-install \
         iconv \
         mbstring \
         intl \
@@ -36,7 +38,7 @@ RUN pecl install redis \
         imagick
 
 # Install APCu and APC backward compatibility
-RUN pecl install apcu \
+RUN pecl7.1-sp install apcu \
     && pecl install apcu_bc-1.0.3 \
     && docker-php-ext-enable apcu --ini-name 10-docker-php-ext-apcu.ini \
     && docker-php-ext-enable apc --ini-name 20-docker-php-ext-apc.ini
