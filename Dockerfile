@@ -34,7 +34,7 @@ RUN pecl install redis \
         memcached \
         pcntl \
         ftp \
-        imagick
+        imagick \
     && docker-php-ext-enable \
         redis \
         opcache \
