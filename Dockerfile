@@ -20,9 +20,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
 # Install Redis and Imagick
 RUN pecl install redis-3.1.0 \
     && pecl install imagick-3.4.1 \
-    && docker-php-ext-enable \
-        redis \
-        imagick
+    && docker-php-ext-enable redis imagick
 
 # Install PHP extensions
 RUN docker-php-ext-install \
