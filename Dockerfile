@@ -21,6 +21,8 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
 #RUN pecl install redis-3.1.0 \
 #    && pecl install imagick-3.4.1 \
 #    && docker-php-ext-enable redis imagick
+RUN pecl install redis-3.1.0 \
+    && docker-php-ext-enable redis
 
 # Install APCu and APC backward compatibility
 RUN pecl install apcu \
@@ -29,7 +31,18 @@ RUN pecl install apcu \
     && docker-php-ext-enable apc --ini-name 20-docker-php-ext-apc.ini
 
 # Install PHP extensions
-RUN docker-php-ext-install iconv mbstring intl mcrypt pdo_mysql pdo_dblib soap sockets zip pcntl ftp
+RUN docker-php-ext-install \
+    iconv \
+    mbstring \
+    intl \
+    mcrypt \
+    pdo \
+    pdo_mysql \
+    soap \
+    sockets \
+    zip \
+    pcntl \
+    ftp
 
 # Clean repository
 RUN apt-get clean \
