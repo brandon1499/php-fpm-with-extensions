@@ -16,7 +16,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     freetds-dev
 
 # Install Redis
-RUN pecl7.1-sp install redis
+RUN pecl7.1-sp install redis-3.1.0
 
 # Install PHP extensions
 RUN docker-php-ext-install \
@@ -39,7 +39,7 @@ RUN docker-php-ext-install \
 
 # Install APCu and APC backward compatibility
 RUN pecl7.1-sp install apcu \
-    && pecl install apcu_bc-1.0.3 \
+    && pecl7.1-sp install apcu_bc-1.0.3 \
     && docker-php-ext-enable apcu --ini-name 10-docker-php-ext-apcu.ini \
     && docker-php-ext-enable apc --ini-name 20-docker-php-ext-apc.ini
 
