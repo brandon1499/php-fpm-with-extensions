@@ -13,11 +13,16 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     libxml2-dev \
     libaio-dev \
     libmemcached-dev \
-    freetds-dev
+    freetds-dev \
+    libmagickwand-dev \
+    imagemagick
 
 # Install Redis and Imagick
 RUN pecl install redis-3.1.0 \
-    && pecl install imagick
+    && pecl install imagick-3.4.1 \
+    && docker-php-ext-enable \
+        redis \
+        imagick
 
 # Install PHP extensions
 RUN docker-php-ext-install \
@@ -31,10 +36,7 @@ RUN docker-php-ext-install \
         sockets \
         zip \
         pcntl \
-        ftp \
-    && docker-php-ext-enable \
-        redis \
-        imagick
+        ftp
 
 # Install APCu and APC backward compatibility
 RUN pecl install apcu \
