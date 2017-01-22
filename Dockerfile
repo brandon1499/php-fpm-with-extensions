@@ -31,19 +31,22 @@ RUN pecl install apcu \
     && docker-php-ext-enable apc --ini-name 20-docker-php-ext-apc.ini
 
 # Install PHP extensions
+#RUN docker-php-ext-install \
+#    iconv \
+#    mbstring \
+#    intl \
+#    mcrypt \
+#    pdo \
+#    pdo_mysql \
+#    soap \
+#    sockets \
+#    zip \
+#    pcntl \
+#    ftp
 RUN docker-php-ext-install \
-    iconv \
-    mbstring \
-    intl \
-    mcrypt \
     pdo \
-    pdo_mysql \
-    soap \
-    sockets \
-    zip \
-    pcntl \
-    ftp
+    pdo_mysql
 
 # Clean repository
-RUN apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+#RUN apt-get clean \
+#    && rm -rf /var/lib/apt/lists/*
