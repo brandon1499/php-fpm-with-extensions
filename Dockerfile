@@ -17,10 +17,6 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
 
 # Install PHP extensions
 RUN pecl install redis \
-    && git clone https://github.com/php-memcached-dev/php-memcached /usr/src/php/ext/memcached \
-    && cd /usr/src/php/ext/memcached && git checkout -b php7 origin/php7 \
-    && docker-php-ext-configure memcached \
-    && docker-php-ext-configure pdo_dblib --with-libdir=/lib/x86_64-linux-gnu \
     && docker-php-ext-install \
         iconv \
         mbstring \
