@@ -33,9 +33,7 @@ RUN docker-php-ext-install \
         ftp \
         imagick \
     && docker-php-ext-enable \
-        redis \
-        opcache \
-        imagick
+        redis
 
 # Install APCu and APC backward compatibility
 RUN pecl install apcu \
