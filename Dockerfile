@@ -27,7 +27,6 @@ RUN pecl install redis \
         soap \
         sockets \
         zip \
-        memcached \
         pcntl \
         ftp \
         imagick \
