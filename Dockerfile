@@ -15,8 +15,9 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     libmemcached-dev \
     freetds-dev
 
-# Install Redis
-RUN pecl install redis-3.1.0
+# Install Redis and Imagick
+RUN pecl install redis-3.1.0 \
+    && pecl install imagick
 
 # Install PHP extensions
 RUN docker-php-ext-install \
@@ -31,9 +32,9 @@ RUN docker-php-ext-install \
         zip \
         pcntl \
         ftp \
-        imagick \
     && docker-php-ext-enable \
-        redis
+        redis \
+        imagick
 
 # Install APCu and APC backward compatibility
 RUN pecl install apcu \
