@@ -18,9 +18,9 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     imagemagick
 
 # Install Redis and Imagick
-RUN pecl install redis-3.1.0 \
-    && pecl install imagick-3.4.1 \
-    && docker-php-ext-enable redis imagick
+#RUN pecl install redis-3.1.0 \
+#    && pecl install imagick-3.4.1 \
+#    && docker-php-ext-enable redis imagick
 
 # Install APCu and APC backward compatibility
 RUN pecl install apcu \
